@@ -9,7 +9,6 @@ Rails.application.routes.draw do
     devise_scope :admin do
       get 'admins/sign_up' => 'devise/registrations#new', as: :new_admin_registration
       post 'admins/sign_up' => 'devise/registrations#create', as: :admin_registration
-      get 'admins/sign_out' => 'devise/registrations#destroy', as: :destroy_admin_registration
     end
   end
 
@@ -23,3 +22,4 @@ Rails.application.routes.draw do
   resources :posts
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
+
