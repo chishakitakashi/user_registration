@@ -16,7 +16,7 @@
   <% if user_signed_in? %>
     <% if current_user.admin? %>
       <%= link_to "患者新規登録", new_admin_registration_path %>
-      <h3>今は病院管理者！userのメアド</h3>
+      <h3>ログイン中の病院管理者！userのメアド</h3>
       <%= current_user.email %> 
       <%= button_to '病院管理者ログアウト', destroy_user_session_path, method: :delete %>  
     <% else %>
@@ -29,37 +29,14 @@
   <% end %>
 
   <% if admin_signed_in? %>
-    <h3>患者adminのメアド</h3>
+    <h3>ログイン中の患者adminのメアド</h3>
     <%= current_admin.email %>
     <%= button_to '患者ログアウト', destroy_admin_session_path, method: :delete %>
+  <% else %>
+    <h3>患者はログアウト中</h3>
+    <%= link_to "患者Log in", new_admin_session_path %><br>
   <% end %>
-
-    <%# link_to "user新規登録", new_user_registration_path %>
 
     <%= yield %>
   </body>
 </html>
-
-
-  <% if user_signed_in? %>
-    <% if current_user.admin? %>
-      <%= link_to "患者新規登録", new_admin_registration_path %>
-      <h3>今は病院管理者!userのメアド</h3>
-      <%= current_user.email %> 
-      <%= button_to '病院管理者ログアウト', destroy_user_session_path, method: :delete %>  
-    <% else %>
-      <p>病院userのメアド</p>
-      <%= current_user.email %>
-      <%= button_to 'userログアウト', destroy_user_session_path, method: :delete %>
-    <% end %>
-  <% else %>
-        <%= link_to "病院userログイン", new_user_session_path %>
-  <% end %>
-
-  <% if admin_signed_in? %>
-    <h3>患者adminのメアド。患者がログインしてる！！</h3>
-    <%= current_admin.email %>
-    <%= button_to '患者ログアウト', destroy_admin_session_path, method: :delete %>
-  <% else %>
-    患者ログアウト中
-  <% end %>
