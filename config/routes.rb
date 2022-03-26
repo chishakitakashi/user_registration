@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   devise_for :admins, skip: [:registrations], controllers: {
+    #これらを書かないとログイン時に呼び出されるアクションがuserのroutingと一致してしまう。
     sessions:      'admins/sessions',
     passwords:     'admins/passwords',
   }
